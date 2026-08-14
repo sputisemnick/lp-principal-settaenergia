@@ -2277,7 +2277,7 @@ section[id], .form-card[id] { scroll-margin-top: calc(var(--header-h) + 18px); }
 
 /* A faixa permanece contínua, porém em um ritmo mais confortável. */
 .logo-marquee__track {
-  animation-duration: 78s;
+  animation-duration: 118s;
 }
 
 /* "Indicou?" volta ao fluxo normal: todo o conteúdo fica disponível assim
@@ -2421,7 +2421,7 @@ section[id], .form-card[id] { scroll-margin-top: calc(var(--header-h) + 18px); }
   }
 
   .logo-marquee__track {
-    animation-duration: 88s;
+    animation-duration: 132s;
   }
 
   .indique-scroll-sticky {
