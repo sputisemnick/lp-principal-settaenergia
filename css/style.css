@@ -430,7 +430,7 @@ button { cursor: pointer; }
   font-size: 15.5px;
   line-height: 1.6;
 }
-.hero__lead--secondary { margin-top: 5px; }
+.hero__lead--secondary { margin-top: 4px; }
 .hero__lead strong {
   padding-inline: .08em;
   color: #eeeeee;
