@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EEEEEE">
+  <title>Pode dizer sim | Setta Energia — 20% de desconto na conta de luz</title>
+  <meta name="description" content="Com a Setta você economiza 20% na conta de luz todo mês, sem obra, sem placa e sem fidelidade. A folga que sobra vira o que você quiser dizer sim.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Setta Energia">
+  <meta property="og:title" content="Pode dizer sim | Setta Energia">
+  <meta property="og:description" content="Economize 20% na conta de luz e sobre pra dizer sim pro que antes não dava. 100% digital, zero investimento, sem fidelidade.">
+  <meta property="og:image" content="assets/images/hero-familia-desktop-v2.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/images/setta-logo-footer.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/hero-familia-desktop-v2.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="header__brand" href="#topo" aria-label="Setta Energia — início">
+        <img src="assets/images/setta-logo-current.svg" width="120" height="40" alt="Setta Energia">
+      </a>
+
+      <nav class="header__nav" id="menu-principal" aria-label="Navegação principal">
+        <ul class="header__links">
+          <li><a href="#o-sim" data-scroll>O Sim na prática</a></li>
+          <li><a href="#como-funciona" data-scroll>Como funciona</a></li>
+          <li><a href="#empresas" data-scroll>Para empresas</a></li>
+          <li><a href="#duvidas" data-scroll>Dúvidas</a></li>
+        </ul>
+        <div class="header__actions">
+          <a class="btn btn--primary btn--sm" href="https://www.portalsettaenergia.com.br" target="_blank" rel="noopener noreferrer">Já sou cliente</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="topo">
+      <div class="hero__media" aria-hidden="true">
+        <picture>
+          <source media="(min-width: 900px)" srcset="assets/images/hero-familia-desktop-v2.png">
+          <img src="assets/images/hero-familia-desktop-v2.png" width="2200" height="1000" alt="" fetchpriority="high" decoding="async">
+        </picture>
+      </div>
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="card hero__card" id="simular">
+          <h1 class="hero__title">Pode <em>dizer sim</em>.</h1>
+          <p class="hero__lead">
+            Com a Setta você economiza <strong>20% na conta de luz</strong> e sobra pra dizer sim pro que antes não dava.
+            <span>A viagem, o presente, o ar ligado à noite toda.</span>
+          </p>
+
+          <div class="hero__form">
+            <div class="form-card__head">
+              <h2 class="form-card__title">Comece a dizer sim agora.</h2>
+              <p class="form-card__sub">Preenche aqui que a gente cuida do resto.</p>
+              <p class="form-card__intent" id="intent-note" hidden>Proposta para <strong>empresa</strong> — a gente ajusta o cálculo pro seu consumo.</p>
+            </div>
+
+            <form class="form" id="lead-form" novalidate>
+              <input type="hidden" name="intencao" id="intencao" value="residencial">
+
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar?" required aria-describedby="erro-nome">
+                <p class="field__error" id="erro-nome"></p>
+              </div>
+
+              <div class="field">
+                <label for="whatsapp">WhatsApp</label>
+                <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(81) 99999-9999" maxlength="15" required aria-describedby="erro-whatsapp">
+                <p class="field__error" id="erro-whatsapp"></p>
+              </div>
+
+              <div class="field">
+                <label for="conta">Valor médio da conta de luz</label>
+                <input id="conta" name="conta" type="text" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" required aria-describedby="erro-conta">
+                <p class="field__error" id="erro-conta"></p>
+              </div>
+
+              <div class="field field--cnpj" id="campo-cnpj" hidden>
+                <label for="cnpj">CNPJ <span>(opcional)</span></label>
+                <input id="cnpj" name="cnpj" type="text" inputmode="numeric" autocomplete="off" placeholder="00.000.000/0000-00" maxlength="18" aria-describedby="erro-cnpj">
+                <p class="field__error" id="erro-cnpj"></p>
+              </div>
+
+              <button class="btn btn--primary btn--block" type="submit" id="lead-submit">
+                <span class="btn__label">Sim, quero saber mais</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+
+              <p class="form__privacy">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 11h14v9H5zM8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                Seus dados ficam só com a gente. Nada de spam, prometido.
+              </p>
+              <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+
+          </div>
+        </div>
+      </div>
+ 
+    <!-- Faixa de confiança — parte da Hero -->
+    <div class="trust">
+      <div class="container trust__inner">
+        <ul class="chips" aria-label="Principais vantagens">
+          <li class="chip"><img src="assets/icons/percent.svg" width="18" height="18" alt="" aria-hidden="true">20% fixo</li>
+          <li class="chip"><img src="assets/icons/mobile.svg" width="18" height="18" alt="" aria-hidden="true">100% digital</li>
+          <li class="chip"><img src="assets/icons/no-cost.svg" width="18" height="18" alt="" aria-hidden="true">Zero investimento</li>
+          <li class="chip"><img src="assets/icons/unlock.svg" width="18" height="18" alt="" aria-hidden="true">Sem fidelidade</li>
+        </ul>
+        <a class="rating" href="https://www.google.com/search?q=setta+energia" target="_blank" rel="noopener noreferrer">
+              <span class="rating__score">4,9</span>
+              <span class="rating__stars" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+                <svg viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg>
+              </span>
+              <span class="rating__text">no Google · <span class="rating__cta">Compartilhe sua opinião, também</span></span>
+            </a>
+      </div>
+    </div>
+    </section>
+
+    <!-- ================= O SIM NA PRÁTICA ================= -->
+    <section class="section section--cream" id="o-sim" aria-labelledby="o-sim-title">
+      <div class="container">
+        <div class="bloco-titulo reveal">
+          <p class="eyebrow">O Sim na prática</p>
+          <h2 class="display" id="o-sim-title">Todo mês que você economiza,<br>um <span class="strike">“não”</span> vira <em>“sim”</em>.</h2>
+          <p class="bloco-titulo__lead">A conta de luz apertada faz a gente dizer não pra coisa boa sem nem perceber. Com 20% a menos na conta, essa folga volta pra sua casa e vira o que você quiser.</p>
+        </div>
+      </div>
+
+      <div class="container tiles__wrap">
+        <ul class="tiles" role="list" tabindex="0" aria-describedby="tiles-hint">
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/ar-condicionado-v2.png" alt="Pessoa dormindo tranquila com o ar-condicionado ligado no quarto" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">Deixa o ar desligado que tá caro.</span></p>
+              <p class="tile__yes">Pode dormir<em>no friozinho.</em></p>
+            </div>
+          </li>
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/viagem-v2.png" alt="Família chegando ao destino de viagem com as malas" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">A viagem fica pro ano que vem.</span></p>
+              <p class="tile__yes">Pode marcar<em>a viagem.</em></p>
+            </div>
+          </li>
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/presente-v2.png" alt="Pessoa entregando um presente embrulhado a alguém querido" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">Esse mês não dá pro presente.</span></p>
+              <p class="tile__yes">Pode dar<em>o presente.</em></p>
+            </div>
+          </li>
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/curso-v2.png" alt="Pessoa estudando em casa com o notebook aberto" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">O curso a gente vê depois.</span></p>
+              <p class="tile__yes">Pode fazer<em>o curso.</em></p>
+            </div>
+          </li>
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/banho-v2.png" alt="Chuveiro ligado em um banheiro de casa" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">Banho rápido que a conta pesa.</span></p>
+              <p class="tile__yes">Pode caprichar<em>no banho.</em></p>
+            </div>
+          </li>
+          <li class="tile reveal">
+            <div class="tile__media">
+              <img src="assets/images/sim/pizza-v2.png" alt="Amigos dividindo uma pizza na mesa de casa na sexta à noite" loading="lazy" decoding="async">
+            </div>
+            <div class="tile__copy">
+              <p class="tile__no"><span class="strike">A pizza de sexta fica pra próxima.</span></p>
+              <p class="tile__yes">Pode pedir<em>a pizza.</em></p>
+            </div>
+          </li>
+        </ul>
+        <p class="tiles__hint" id="tiles-hint">
+          <span class="tiles__hint-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 20" width="30" height="20"><path d="M4 10h24M9 5l-5 5 5 5M23 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          Arraste para o lado
+        </p>
+      </div>
+
+      <div class="container">
+        <p class="fecho reveal">Não é sobre gastar mais. É sobre <em>poder escolher</em>.<br>Porque as contas, agora, batem. ;)</p>
+      </div>
+    </section>
+
+    <!-- ================= COMO FUNCIONA ================= -->
+    <section class="section" id="como-funciona" aria-labelledby="como-title">
+      <div class="container">
+        <div class="rota-scroll-stage">
+          <div class="rota-scroll-sticky">
+            <div class="bloco-titulo reveal">
+              <p class="eyebrow">Como funciona</p>
+              <h2 class="display" id="como-title">Dizer sim é mais fácil<br>do que você imagina.</h2>
+              <p class="bloco-titulo__lead">Três passos. A parte chata é toda nossa, a sua é só aproveitar.</p>
+            </div>
+
+            <ol class="rota" data-visible-step="3">
+          <li class="rota__passo reveal">
+            <div class="rota__media">
+              <img src="assets/images/passos/passo-1-cadastro-v2.png" alt="Cliente preenchendo o cadastro da Setta pelo celular" loading="lazy" decoding="async">
+            </div>
+            <div class="rota__node" aria-hidden="true"><span>1</span></div>
+            <div class="rota__copy">
+              <h3>Cadastre-se</h3>
+              <p>Nome, WhatsApp e o valor da sua conta. Dois minutos, no máximo.</p>
+            </div>
+          </li>
+          <li class="rota__passo reveal">
+            <div class="rota__media">
+              <img src="assets/images/passos/passo-2-documentos-v2.png" alt="A mesma cliente fotografando a conta de luz e o documento pelo celular" loading="lazy" decoding="async">
+            </div>
+            <div class="rota__node" aria-hidden="true"><span>2</span></div>
+            <div class="rota__copy">
+              <h3>Mande sua conta de luz</h3>
+              <p>Uma foto da fatura e o documento do titular que vai contratar a Setta resolvem. Pode ser tudo pelo celular, do atendimento até a assinatura digital.</p>
+            </div>
+          </li>
+          <li class="rota__passo reveal">
+            <div class="rota__media">
+              <img src="assets/images/passos/passo-3-tranquila-v2.png" alt="A mesma cliente feliz e tranquila depois de concluir o processo" loading="lazy" decoding="async">
+            </div>
+            <div class="rota__node" aria-hidden="true"><span>3</span></div>
+            <div class="rota__copy">
+              <h3>Você diz sim uma vez, e tem desconto todo mês</h3>
+              <p>A Setta ativa tudo junto à distribuidora. O período depende mais da distribuidora, mas pode levar até 30 dias para seu desconto começar a ser aplicado. Daí em diante, sua conta chega com 20% de desconto. Sem você fazer nada.</p>
+            </div>
+          </li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="bloco-cta reveal">
+          <a class="btn btn--primary" href="https://wa.me/558130195995" target="_blank" rel="noopener noreferrer">
+            Sim, quero falar com atendente!
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEM COMPLICAÇÃO ================= -->
+    <section class="section section--navy" aria-labelledby="simples-title">
+      <div class="container simples">
+        <div class="simples__media reveal">
+          <img src="assets/images/casal-relaxando-animado-v1.png" width="1024" height="1536" loading="lazy" decoding="async" alt="Casal relaxando e rindo junto no sofá com pipoca">
+        </div>
+
+        <div class="simples__copy reveal">
+          <p class="eyebrow eyebrow--light">Sem complicação</p>
+          <h2 class="display" id="simples-title">Dizer sim pra Setta é<br>quase <em>não fazer nada</em>.</h2>
+          <p class="simples__lead">Sua rotina continua igual, sua distribuidora continua a mesma, sua casa continua intacta. A única mudança aparece na conta, pra menos ;)</p>
+
+          <ul class="lista-nada" role="list">
+            <li>
+              <span class="lista-nada__marca" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M5 5l14 14M19 5 5 19"/></svg>
+              </span>
+              <div>
+                <h3>Sem <span class="strike">obra</span>, sem <span class="strike">placa</span>, sem <span class="strike">equipamento</span></h3>
+                <p>Seu telhado nem fica sabendo.</p>
+              </div>
+            </li>
+            <li>
+              <span class="lista-nada__marca" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M5 5l14 14M19 5 5 19"/></svg>
+              </span>
+              <div>
+                <h3>Sem <span class="strike">trocar de distribuidora</span></h3>
+                <p>Leitura, rede e suporte técnico seguem exatamente iguais.</p>
+              </div>
+            </li>
+            <li>
+              <span class="lista-nada__marca" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" d="M5 5l14 14M19 5 5 19"/></svg>
+              </span>
+              <div>
+                <h3>Sem <span class="strike">sair de casa</span></h3>
+                <p>Do cadastro ao desconto, você vê cada etapa pelo WhatsApp e pelo app.</p>
+              </div>
+            </li>
+          </ul>
+
+          <a class="btn btn--primary" href="#simular" data-scroll>
+            Sim, quero saber mais
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARA EMPRESAS ================= -->
+    <section class="section section--cream" id="empresas" aria-labelledby="empresas-title">
+      <div class="container">
+        <div class="empresas reveal">
+          <div class="empresas__copy">
+            <p class="eyebrow">Para empresas</p>
+            <h2 class="display" id="empresas-title">Sua empresa também<br><em>pode dizer sim</em>.</h2>
+            <p class="empresas__lead">Comércios, condomínios, restaurantes e escritórios em PE e RN pagam menos energia com a Setta e, quanto maior o consumo, maior a economia em reais.</p>
+            <ul class="empresas__tags" id="ramos-adicionais" role="list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v10h16V10M3 10l2-6h14l2 6M8 20v-6h4v6M3 10c0 1.2 1 2 2.2 2S7.4 11.2 7.4 10c0 1.2 1 2 2.3 2s2.3-.8 2.3-2c0 1.2 1 2 2.3 2s2.3-.8 2.3-2c0 1.2 1 2 2.2 2S21 11.2 21 10"/></svg>Comércios</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4h10v17M15 9h4v12M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1M3 21h18"/></svg>Condomínios</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M4 3v5c0 2 1.3 3 3 3s3-1 3-3V3M7 11v10M16 3v18M16 3c3 2 4 5 4 8h-4"/></svg>Restaurantes</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM9 8V5h6v3M4 13h16M10 12v2h4v-2"/></svg>Escritórios</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8v8M17 8v8M3 10v4M21 10v4M7 12h10M3 9h4v6H3zM17 9h4v6h-4z"/></svg>Academias</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 11.5c-2.7 1.8-4 4-3.1 6.1.8 1.8 3 2 4.6.7 1.3-1 2.7-1 4 0 1.6 1.3 3.8 1.1 4.6-.7.9-2.1-.4-4.3-3.1-6.1-2.1-1.4-4.9-1.4-7 0ZM6.5 9C5.1 9 4 7.7 4 6.2S5 3.5 6.3 3.5 8.7 4.8 8.7 6.3 7.8 9 6.5 9ZM17.5 9C16.2 9 15.3 7.7 15.3 6.3s1-2.8 2.4-2.8S20 4.7 20 6.2 18.9 9 17.5 9ZM11.2 7.5c-1.3 0-2.2-1.3-2.2-2.7S10 2 11.3 2s2.3 1.2 2.3 2.7-1 2.8-2.4 2.8Z"/></svg>Petshops</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5 5h14v14H5z"/></svg>Clínicas</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.5 7.5 11 7M8.5 16.5l11-7"/></svg>Barbearias</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h2l2 10h11l2-7H6M9 19h.01M17 19h.01"/><circle cx="9" cy="19" r="1"/><circle cx="17" cy="19" r="1"/></svg>Mercados</li>
+              <li class="empresas__tags-toggle-item">
+                <button class="empresas__tags-toggle" type="button" aria-expanded="false" aria-controls="ramos-adicionais" aria-label="Mostrar mais ramos de atuação">
+                  <span aria-hidden="true">+</span><span class="sr-only">Mais ramos</span>
+                </button>
+              </li>
+              <li class="empresas__tags-note">E todo tipo de operação que depende da energia para estar presente no mercado.</li>
+            </ul>
+            <a class="btn btn--primary empresas__cta" href="#simular" id="cta-empresa" data-scroll data-intent="empresa">
+              Sim, quero economizar na minha empresa
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+          <div class="empresas__media">
+            <img src="assets/images/empresario-setta-v2.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Empresário sorrindo em seu ambiente de trabalho">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DEPOIMENTOS ================= -->
+    <section class="section" aria-labelledby="depo-title">
+      <div class="container">
+        <div class="bloco-titulo bloco-titulo--esq reveal">
+          <p class="eyebrow">Quem já disse sim</p>
+          <h2 class="display" id="depo-title">Gente de verdade que disse<br>Sim pra Setta. <svg class="heart" viewBox="0 0 24 24" width="30" height="30" role="img" aria-label="coração"><path fill="currentColor" d="M12 21s-7.6-4.7-9.7-9A5.6 5.6 0 0 1 12 6.2 5.6 5.6 0 0 1 21.7 12c-2.1 4.3-9.7 9-9.7 9Z"/></svg></h2>
+        </div>
+
+        <div class="carousel reveal" id="carousel" role="group" aria-roledescription="carrossel" aria-label="Depoimentos de clientes Setta" tabindex="0">
+          <ul class="carousel__track" id="carousel-track" role="list">
+            <li class="depo" role="group" aria-roledescription="slide" aria-label="1 de 3">
+              <figure class="depo__inner">
+                <div class="depo__copy">
+                  <span class="depo__mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote>A economia de energia fez com que tivéssemos mais recursos para investir em negócios internos da empresa, como a expansão de novas unidades.</blockquote>
+                  <figcaption class="depo__author">
+                    <span class="depo__who"><strong>Jefferson</strong><span>CEO, VerdFrut</span></span>
+                    <img class="depo__logo" src="assets/images/testimonial-verdfrut.png" width="350" height="200" loading="lazy" decoding="async" alt="Logotipo VerdFrut Hortimercado">
+                  </figcaption>
+                </div>
+                <div class="depo__media">
+                  <img src="assets/images/depoimentos/jefferson-verdfrut-v2.png" alt="Jefferson, CEO da VerdFrut, em uma estufa de hortaliças" loading="lazy" decoding="async">
+                </div>
+              </figure>
+            </li>
+            <li class="depo" role="group" aria-roledescription="slide" aria-label="2 de 3">
+              <figure class="depo__inner">
+                <div class="depo__copy">
+                  <span class="depo__mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote>Em mais de 2 anos juntos com a Setta Energia, já conseguimos economizar em torno de 250 mil reais, sem nenhum investimento!</blockquote>
+                  <figcaption class="depo__author">
+                    <span class="depo__who"><strong>Victor</strong><span>CEO, Pizza Hut Pernambuco</span></span>
+                    <img class="depo__logo" src="assets/images/testimonial-pizzahut.png" width="350" height="200" loading="lazy" decoding="async" alt="Logotipo Pizza Hut">
+                  </figcaption>
+                </div>
+                <div class="depo__media">
+                  <img src="assets/images/depoimentos/victor-pizzahut-v2.png" alt="Victor, CEO da Pizza Hut Pernambuco, no restaurante" loading="lazy" decoding="async">
+                </div>
+              </figure>
+            </li>
+            <li class="depo" role="group" aria-roledescription="slide" aria-label="3 de 3">
+              <figure class="depo__inner">
+                <div class="depo__copy">
+                  <span class="depo__mark" aria-hidden="true">&ldquo;</span>
+                  <blockquote>Com a economia em nossa conta de energia conseguimos investir ainda mais em nosso condomínio!</blockquote>
+                  <figcaption class="depo__author">
+                    <span class="depo__who"><strong>Paulo</strong><span>Síndico, Varanda do Parque</span></span>
+                    <img class="depo__logo" src="assets/images/testimonial-varanda.png" width="350" height="200" loading="lazy" decoding="async" alt="Logotipo Varanda do Parque">
+                  </figcaption>
+                </div>
+                <div class="depo__media">
+                  <img src="assets/images/depoimentos/paulo-varanda-do-parque.jpg" alt="Paulo, síndico do Varanda do Parque" loading="lazy" decoding="async" data-ph>
+                </div>
+              </figure>
+            </li>
+          </ul>
+
+          <div class="carousel__nav">
+            <button class="carousel__btn" type="button" id="carousel-prev" aria-label="Depoimento anterior">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 6l-6 6 6 6"/></svg>
+            </button>
+            <div class="carousel__dots" id="carousel-dots"></div>
+            <button class="carousel__btn" type="button" id="carousel-next" aria-label="Próximo depoimento">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLIENTES QUE TAMBÉM DISSERAM SIM ================= -->
+    <section class="logo-marquee" aria-labelledby="logo-marquee-title">
+      <div class="container logo-marquee__heading reveal">
+        <h2 class="display logo-marquee__title" id="logo-marquee-title">Quem também já disse <strong>SIM</strong><span aria-hidden="true">.</span></h2>
+      </div>
+      <div class="logo-marquee__viewport" role="region" aria-label="Empresas clientes da Setta Energia">
+        <div class="logo-marquee__track">
+          <ul class="logo-marquee__group" role="list">
+            <li class="client-logo"><img src="assets/images/clientes/verdfrut.png" alt="VerdFrut" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/nova-mobi.png" alt="Nova Mobi Pernambuco" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/pizza-hut.png" alt="Pizza Hut" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/varanda-do-parque.png" alt="Varanda do Parque" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/real-botequim.png" alt="Real Botequim" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/economico.png" alt="Econômico" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/finger.png" alt="Finger Móveis Planejados" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/cattan.png" alt="Cattan" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/narciso-enxovais.png" alt="Narciso Enxovais" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/autonunes.png" alt="Grupo Autonunes" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/casa-do-para.png" alt="Casa do Pará" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/vitrage.png" alt="Vitrage" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/farmacias-prime.png" alt="Farmácias Prime" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/boi-verde.png" alt="Boi Verde" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/colegio-decisao.png" alt="Colégio Decisão" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/pharmapele.png" alt="Pharmapele" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/sao-braz.png" alt="São Braz" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/postos-domingos.png" alt="Rede de Postos Domingos" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/esposende.png" alt="Esposende" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/veterinarii.png" alt="Veterinarii" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/x1-fitness.png" alt="X1 Fitness" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/drogaria-santa-fe.png" alt="Drogaria Santa Fé" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/life-academia.png" alt="Life Academia" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/eco-postos.png" alt="Eco Postos" loading="lazy" decoding="async"></li>
+            <li class="client-logo"><img src="assets/images/clientes/clinica-armando-moura.png" alt="Clínica Armando Moura Neto" loading="lazy" decoding="async"></li>
+          </ul>
+          <ul class="logo-marquee__group" role="list" aria-hidden="true"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INDIQUE E GANHE ================= -->
+    <section class="section section--orange indique-section" aria-labelledby="indique-title">
+      <div class="indique-scroll-stage">
+        <div class="indique-scroll-sticky">
+          <div class="container">
+        <div class="indique">
+          <div class="indique__copy">
+            <p class="eyebrow eyebrow--onOrange">Indique e Ganhe</p>
+            <h2 class="display indique__title" id="indique-title"><span class="indique__title-start">Indicou?</span><span class="indique__title-rest">Recebe mais do que<br>o desconto SIM.</span></h2>
+            <p class="indique__lead">Cada pessoa que você indica e vira cliente devolve o desconto dela pra você em crédito no app. Tem gente que zerou a própria conta assim.</p>
+            <a class="btn btn--navy" href="https://www.portalsettaenergia.com.br" target="_blank" rel="noopener noreferrer">
+              Conhecer o Indique e Ganhe
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+          <div class="indique__media">
+            <img src="assets/images/indique/celular-indique-v2.png" width="1454" height="1086" alt="Pessoa vista de costas usando o celular para indicar amigos" loading="lazy" decoding="async">
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section section--cream" id="duvidas" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="faq-layout__aside reveal">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 class="display" id="faq-title">Antes de dizer sim,<br>tire aqui as dúvidas.</h2>
+          <p class="faq-layout__nota">Ficou alguma de fora? <a href="https://wa.me/558130195995" target="_blank" rel="noopener noreferrer">Pergunta pra gente no WhatsApp.</a></p>
+        </div>
+
+        <div class="faq" id="faq"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="assets/images/setta-logo.svg" width="300" height="91" loading="lazy" alt="Setta Energia">
+        <p class="footer__claim">Pode dizer sim.</p>
+        <p class="footer__text">Energia limpa, conta mais leve e zero complicação.</p>
+        <div class="footer__apps" aria-label="Baixe o aplicativo Setta Energia">
+          <p class="footer__apps-title">Baixe o app</p>
+          <div class="footer__apps-links">
+            <a class="app-link" href="https://apps.apple.com/br/app/setta-energia/id6553999034" target="_blank" rel="noopener noreferrer" aria-label="Baixar Setta Energia na App Store">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M17.05 12.54c-.03-3 2.45-4.46 2.56-4.53a5.5 5.5 0 0 0-4.32-2.34c-1.82-.19-3.58 1.09-4.5 1.09-.94 0-2.36-1.07-3.9-1.04a5.73 5.73 0 0 0-4.82 2.94c-2.09 3.62-.53 8.95 1.47 11.88 1 1.43 2.16 3.03 3.7 2.97 1.5-.06 2.06-.95 3.87-.95 1.8 0 2.33.95 3.89.91 1.62-.02 2.64-1.43 3.6-2.88a11.9 11.9 0 0 0 1.65-3.35 5.2 5.2 0 0 1-3.2-4.7ZM14.1 3.74A5.27 5.27 0 0 0 15.3 0a5.34 5.34 0 0 0-3.45 1.78 5.02 5.02 0 0 0-1.23 3.6 4.42 4.42 0 0 0 3.48-1.64Z"/></svg>
+              <span><small>Baixar na</small>App Store</span>
+            </a>
+            <a class="app-link" href="https://play.google.com/store/apps/details?id=com.settaenergia.setta_mobile_app" target="_blank" rel="noopener noreferrer" aria-label="Baixar Setta Energia no Google Play">
+              <svg class="app-link__play" viewBox="0 0 32 36" width="24" height="27" aria-hidden="true">
+                <path fill="#00D26A" d="M3.7 1.7A3 3 0 0 0 2 4.4v27.2a3 3 0 0 0 1.7 2.7l16.1-16.2L3.7 1.7Z"/>
+                <path fill="#00A9F4" d="m19.8 18.1 4.4-4.4L7.8 4.4l12 13.7Z"/>
+                <path fill="#FFCC00" d="M7.8 31.6 24.2 22l-4.4-3.9-12 13.5Z"/>
+                <path fill="#FF4B55" d="m24.2 13.7 5.1 2.9c1 .6 1 2.2 0 2.8L24.2 22l-4.4-3.9 4.4-4.4Z"/>
+              </svg>
+              <span><small>Disponível no</small>Google Play</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="footer__col" aria-label="Setta Energia">
+        <h2>Setta</h2>
+        <a class="footer__icon-link" href="https://www.instagram.com/settaenergia/" target="_blank" rel="noopener noreferrer"><img src="assets/icons/instagram.svg" width="18" height="18" alt="" aria-hidden="true">@settaenergia</a>
+        <a class="footer__icon-link" href="https://br.linkedin.com/company/settaenergia" target="_blank" rel="noopener noreferrer"><img src="assets/icons/linkedin.svg" width="18" height="18" alt="" aria-hidden="true">LinkedIn</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Atendimento">
+        <h2>Atendimento</h2>
+        <a href="https://www.portalsettaenergia.com.br" target="_blank" rel="noopener noreferrer">Portal do cliente</a>
+        <a class="footer__icon-link" href="https://wa.me/558130195995" target="_blank" rel="noopener noreferrer"><img src="assets/icons/whatsapp.svg" width="18" height="18" alt="" aria-hidden="true">WhatsApp</a>
+        <a href="mailto:contato@settaenergia.com.br">contato@settaenergia.com.br</a>
+        <a href="tel:+558130195995">(81) 3019-5995</a>
+      </nav>
+
+      <div class="footer__col">
+        <h2>Cobertura</h2>
+        <p class="footer__text">Pernambuco e Rio Grande do Norte.</p>
+        <p class="footer__text">Consumo mínimo de 200 kWh/mês (monofásico) ou 300 kWh/mês (trifásico).</p>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span>© 2026 Setta Energia</span>
+      <span>CNPJ 27.786.322/0001-64</span>
+    </div>
+  </footer>
+
+  <!-- Sucesso -->
+  <div class="modal" id="modal-sucesso" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+      <button class="modal__close" type="button" aria-label="Fechar" data-close-modal>
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <span class="modal__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4.5 4.5L19 7"/></svg>
+      </span>
+      <h2 class="modal__title" id="modal-title">Pronto! Já pode começar a dizer sim.</h2>
+      <p class="modal__text" id="modal-desc">Recebemos seu cadastro. Nosso time vai te chamar no WhatsApp pra pegar a foto da sua conta e finalizar. Aí é só esperar o desconto chegar.</p>
+      <p class="modal__hint">Fica de olho no WhatsApp.</p>
+      <a class="btn btn--primary btn--block" href="https://wa.me/558130195995" target="_blank" rel="noopener noreferrer">Falar com a Setta agora</a>
+      <button class="modal__secondary" type="button" data-close-modal>Voltar para a página</button>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
