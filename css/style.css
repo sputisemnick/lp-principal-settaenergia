@@ -2184,3 +2184,315 @@ section[id], .form-card[id] { scroll-margin-top: calc(var(--header-h) + 18px); }
     text-align: center;
   }
 }
+
+/* =========================================================
+   Revisão de experiência — primeira dobra clara e scroll livre
+   ========================================================= */
+
+/* O conteúdo principal não perde contraste durante a rolagem. Isso mantém o
+   formulário plenamente legível enquanto a pessoa preenche os campos. */
+.hero__media,
+.hero__scrim,
+.hero__inner,
+.trust {
+  opacity: 1 !important;
+  transform: none !important;
+  will-change: auto;
+}
+
+.hero {
+  background: var(--white);
+}
+
+.hero__title,
+.hero__intro,
+.hero__lead,
+.hero__lead strong,
+.hero__lead span {
+  color: var(--navy);
+}
+
+.hero__title {
+  font-size: clamp(42px, 4vw, 58px);
+  line-height: .98;
+}
+
+.hero__title > span {
+  display: block;
+  margin-top: .16em;
+  font-size: .7em;
+  line-height: 1.12;
+  letter-spacing: -.04em;
+}
+
+.hero__title em {
+  background-image: linear-gradient(180deg, transparent 64%, #FFA300 64%, #FFA300 94%, transparent 94%);
+}
+
+.hero__lead {
+  max-width: 470px;
+  color: rgba(19, 21, 79, .88);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.hero__lead.hero__lead--secondary {
+  margin-top: 4px;
+  color: rgba(19, 21, 79, .68);
+}
+
+.hero__card {
+  border: 1px solid rgba(19, 21, 79, .1);
+  box-shadow: 0 18px 48px rgba(19, 21, 79, .14);
+}
+
+/* Benefícios mais fáceis de escanear: cada ícone ganha uma área de destaque. */
+.trust {
+  background: var(--white);
+}
+
+.chips {
+  gap: 10px;
+}
+
+.chip {
+  min-height: 46px;
+  gap: 10px;
+  padding: 7px 14px 7px 8px;
+  background: var(--white);
+  border-color: rgba(19, 21, 79, .12);
+  box-shadow: 0 5px 16px rgba(19, 21, 79, .06);
+  font-size: 13px;
+}
+
+.chip img {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  box-sizing: content-box;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255, 163, 0, .18);
+}
+
+/* A faixa permanece contínua, porém em um ritmo mais confortável. */
+.logo-marquee__track {
+  animation-duration: 78s;
+}
+
+/* "Indicou?" volta ao fluxo normal: todo o conteúdo fica disponível assim
+   que a seção entra na tela, sem sticky, espera ou captura de scroll. */
+.motion-ready .indique-scroll-stage,
+.indique-scroll-stage {
+  height: auto !important;
+}
+
+.motion-ready .indique-scroll-sticky,
+.indique-scroll-sticky {
+  position: relative !important;
+  top: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding-block: clamp(58px, 7vw, 84px) !important;
+  --indique-copy-x: 0%;
+  --indique-eyebrow-opacity: 1;
+  --indique-type-progress: 1;
+  --indique-type-clip: 0%;
+  --indique-type-opacity: 1;
+  --indique-lead-opacity: 1;
+  --indique-button-opacity: 1;
+  --indique-image-opacity: 1;
+}
+
+.indique-scroll-sticky .indique__copy,
+.indique-scroll-sticky .eyebrow,
+.indique-scroll-sticky .indique__lead,
+.indique-scroll-sticky .indique__copy .btn,
+.indique-scroll-sticky .indique__media {
+  opacity: 1 !important;
+  transform: none !important;
+  text-align: left;
+}
+
+.indique-scroll-sticky .indique__title-rest {
+  max-height: none !important;
+  clip-path: none !important;
+  opacity: 1 !important;
+}
+
+.indique-scroll-sticky .indique__title {
+  white-space: normal;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: calc(100vh - var(--header-h));
+    background: var(--white);
+  }
+
+  .hero__media img {
+    object-position: center;
+  }
+
+  .hero__scrim {
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .94) 28%, rgba(255, 255, 255, .7) 40%, rgba(255, 255, 255, .14) 58%, transparent 72%),
+      linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
+  }
+
+  .hero__inner {
+    padding-top: 22px;
+    padding-bottom: 62px;
+  }
+
+  .hero__stack {
+    max-width: 492px;
+    gap: 20px;
+  }
+
+  .hero__card {
+    max-width: 452px;
+    background: rgba(255, 255, 255, .97);
+  }
+
+  .hero > .trust {
+    margin-top: -22px;
+  }
+}
+
+@media (max-width: 899px) {
+  .hero::before {
+    content: none;
+  }
+
+  .hero {
+    background: var(--white);
+  }
+
+  .hero__media {
+    height: clamp(300px, 68vw, 430px);
+    background: var(--cream);
+    border-radius: 0 0 26px 26px;
+  }
+
+  .hero__media img {
+    object-fit: cover;
+    object-position: center 43%;
+    transform: none;
+  }
+
+  .hero__scrim {
+    display: none;
+  }
+
+  .hero__inner {
+    padding-top: 30px;
+    padding-bottom: 34px;
+  }
+
+  .hero__stack {
+    max-width: 560px;
+    gap: 22px;
+  }
+
+  .hero__title {
+    font-size: clamp(38px, 9.5vw, 52px);
+  }
+
+  .hero__title > span {
+    font-size: .68em;
+  }
+
+  .hero__intro {
+    color: var(--navy);
+  }
+
+  .hero__card {
+    padding: 24px;
+  }
+
+  .trust {
+    background: var(--cream);
+  }
+
+  .chip {
+    min-height: 50px;
+  }
+
+  .logo-marquee__track {
+    animation-duration: 88s;
+  }
+
+  .indique-scroll-sticky {
+    padding-block: 48px !important;
+  }
+
+  .indique {
+    gap: 24px;
+  }
+
+  .indique__copy {
+    padding-inline: 2px;
+  }
+}
+
+@media (max-width: 599px) {
+  .hero__media {
+    height: min(76vw, 350px);
+    margin: 12px 14px 0;
+    border-radius: 22px;
+  }
+
+  .hero__media img {
+    object-position: center 42%;
+    transform: none;
+  }
+
+  .hero__inner {
+    padding-top: 26px;
+  }
+
+  .hero__title {
+    font-size: clamp(36px, 10vw, 44px);
+  }
+
+  .hero__lead {
+    font-size: 15px;
+  }
+
+  .hero__card {
+    padding: 22px 20px;
+  }
+
+  .chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .chip {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .indique-scroll-sticky {
+    padding-block: 42px !important;
+  }
+
+  .indique__title {
+    font-size: clamp(31px, 9vw, 40px);
+    line-height: 1.08;
+  }
+
+  .indique__lead {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
+
+/* Tablet mantém a seção empresarial aprovada; somente o celular a oculta. */
+@media (min-width: 600px) and (max-width: 899px) {
+  #empresas {
+    display: block !important;
+  }
+}

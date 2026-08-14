@@ -60,45 +60,6 @@
   })();
 
   /* =======================================================
-     Hero e faixa de confiança — saída progressiva no scroll
-     ======================================================= */
-  (function heroScrollExit() {
-    var hero = $(".hero");
-    var trust = $(".trust");
-    if (!hero || !trust || prefersReducedMotion) return;
-
-    var ticking = false;
-    var clamp = function (value) { return Math.max(0, Math.min(1, value)); };
-
-    function update() {
-      ticking = false;
-      var heroRect = hero.getBoundingClientRect();
-      var heroHeight = Math.max(hero.offsetHeight, 1);
-      var heroProgress = clamp((-heroRect.top) / Math.max(420, heroHeight * .96));
-      var heroEased = heroProgress * heroProgress * (3 - 2 * heroProgress);
-      var trustStart = heroHeight * .58;
-      var trustProgress = clamp(((-heroRect.top) - trustStart) / Math.max(180, heroHeight * .34));
-
-      hero.style.setProperty("--hero-scroll-opacity", (1 - heroEased).toFixed(3));
-      hero.style.setProperty("--hero-media-y", (-34 * heroEased).toFixed(2) + "px");
-      hero.style.setProperty("--hero-media-scale", (1 + .025 * heroEased).toFixed(4));
-      hero.style.setProperty("--hero-content-y", (-52 * heroEased).toFixed(2) + "px");
-      trust.style.setProperty("--trust-scroll-opacity", (1 - trustProgress).toFixed(3));
-      trust.style.setProperty("--trust-scroll-y", (28 * trustProgress).toFixed(2) + "px");
-    }
-
-    function requestUpdate() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }
-
-    update();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate, { passive: true });
-  })();
-
-  /* =======================================================
      2. Rolagem suave com compensação do cabeçalho
      ======================================================= */
   (function smoothScroll() {
@@ -311,7 +272,7 @@
   })();
 
   /* =======================================================
-     Indique e Ganhe — narrativa progressiva ligada ao scroll
+     Indique e Ganhe — conteúdo imediato, sem prender o scroll
      ======================================================= */
   (function referralScrollStory() {
     var stage = $(".indique-scroll-stage");
@@ -319,10 +280,6 @@
     if (!stage || !sticky) return;
 
     function setValue(name, value) { sticky.style.setProperty(name, value); }
-    function clamp(value) { return Math.max(0, Math.min(1, value)); }
-    function segment(progress, start, end) {
-      return clamp((progress - start) / Math.max(.001, end - start));
-    }
     function showEverything() {
       sticky.classList.remove("is-story-waiting");
       setValue("--indique-copy-x", "0%");
@@ -335,49 +292,7 @@
       setValue("--indique-image-opacity", "1");
     }
 
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-      showEverything();
-      return;
-    }
-
-    sticky.classList.add("is-story-waiting");
-    var ticking = false;
-
-    function update() {
-      ticking = false;
-      var rect = stage.getBoundingClientRect();
-      var travel = Math.max(1, stage.offsetHeight - sticky.offsetHeight);
-      var progress = clamp(-rect.top / travel);
-
-      // 1. "Indicou?" sozinho; 2. titulo digitado; 3. subtitulo e botao;
-      // 4. texto vai para a esquerda; 5. fotografia entra suavemente.
-      var title = segment(progress, .10, .34);
-      var lead = segment(progress, .32, .50);
-      var button = segment(progress, .46, .62);
-      var shift = segment(progress, .58, .76);
-      var photo = segment(progress, .70, .94);
-      var desktop = window.matchMedia("(min-width: 900px)").matches;
-
-      sticky.classList.toggle("is-story-waiting", shift < .52);
-      setValue("--indique-copy-x", ((desktop ? 50 : 0) * (1 - shift)).toFixed(2) + "%");
-      setValue("--indique-eyebrow-opacity", segment(progress, .24, .38).toFixed(3));
-      setValue("--indique-type-progress", title.toFixed(3));
-      setValue("--indique-type-clip", ((1 - title) * 100).toFixed(2) + "%");
-      setValue("--indique-type-opacity", title.toFixed(3));
-      setValue("--indique-lead-opacity", lead.toFixed(3));
-      setValue("--indique-button-opacity", button.toFixed(3));
-      setValue("--indique-image-opacity", photo.toFixed(3));
-    }
-
-    function requestUpdate() {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }
-
-    update();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate, { passive: true });
+    showEverything();
   })();
 
   /* =======================================================
