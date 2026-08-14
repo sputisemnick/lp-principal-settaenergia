@@ -33,7 +33,11 @@
   };
   if (motionSupported) {
     document.documentElement.classList.add("motion-ready");
-    window.addEventListener("error", disableMotion);
+    // Uma imagem isolada que falhe não deve desligar todas as animações.
+    // O fallback global fica reservado a erros reais de execução do script.
+    window.addEventListener("error", function (event) {
+      if (event.target === window) disableMotion();
+    });
     window.addEventListener("unhandledrejection", disableMotion);
   }
 
@@ -180,7 +184,9 @@
     tiles.addEventListener("touchstart", dismissHint, { passive: true });
     tiles.addEventListener("pointerdown", function (event) {
       if (!window.matchMedia("(max-width: 899px)").matches) return;
-      if (event.pointerType === "mouse" && event.button !== 0) return;
+      // Toque usa o scroll horizontal nativo. Capturar o dedo aqui disputava
+      // com a rolagem vertical da pagina e causava os engasgos no mobile.
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
       dragging = true;
       dragged = false;
       startX = event.clientX;
@@ -195,8 +201,7 @@
       var distance = event.clientX - startX;
       if (Math.abs(distance) > 4) dragged = true;
       tiles.scrollLeft = startScrollLeft - distance;
-      if (dragged) event.preventDefault();
-    }, { passive: false });
+    }, { passive: true });
 
     function finishDrag(event) {
       if (!dragging) return;
@@ -432,7 +437,7 @@
           var d = onlyDigits(whatsapp.value);
           return d.length === 10 || d.length === 11;
         },
-        message: "Precisamos do WhatsApp com DDD, tipo (81) 99999-9999."
+        message: "Precisamos do WhatsApp com DDD, tipo (DDD) 99999-9999."
       },
       {
         input: conta,
@@ -441,6 +446,18 @@
         message: "Informe o valor médio da sua conta de luz."
       }
     ];
+
+    if (cnpj) {
+      rules.push({
+        input: cnpj,
+        error: $("#erro-cnpj"),
+        test: function () {
+          var value = onlyDigits(cnpj.value);
+          return value.length === 0 || value.length === 14;
+        },
+        message: "Confira os 14 números do CNPJ."
+      });
+    }
 
     var setFieldState = function (rule, valid) {
       var field = rule.input.closest(".field");
@@ -463,18 +480,11 @@
 
     /**
      * Ponto único de integração comercial.
-     * Nenhum endpoint externo é chamado neste protótipo — conecte aqui o
-     * CRM / webhook da Setta (fetch para a URL oficial) quando disponível.
+     * A versão de apresentação não transmite nem registra dados pessoais.
+     * Conecte aqui o CRM / webhook oficial antes da publicação de captação.
      */
-    function submitLead(payload) {
-      // TODO: integração comercial pendente.
-      // Exemplo: return fetch(ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
-      if (window.console && window.console.info) {
-        window.console.info("[Setta] Lead pronto para envio:", payload);
-      }
-      return new Promise(function (resolve) {
-        window.setTimeout(function () { resolve({ ok: true }); }, 800);
-      });
+    function submitLead() {
+      return Promise.resolve({ ok: true });
     }
 
     form.addEventListener("submit", function (e) {
@@ -573,29 +583,6 @@
   })();
 
   /* =======================================================
-     5b. Slots de fotografia ainda vazios
-     Enquanto o arquivo não existir em assets/images/, o slot vira um
-     placeholder com o caminho esperado — sem ícone de imagem quebrada.
-     ======================================================= */
-  (function photoSlots() {
-    var marcarVazio = function (img) {
-      var slot = img.closest(".shot");
-      if (!slot) return;
-      var src = img.getAttribute("src") || "";
-      slot.classList.add("is-empty");
-      slot.setAttribute("data-file", src.replace(/^assets\/images\//, ""));
-      slot.setAttribute("role", "img");
-      slot.setAttribute("aria-label", "Espaço reservado para foto: " + (img.getAttribute("alt") || src));
-      img.hidden = true;
-    };
-
-    $$("img[data-ph]").forEach(function (img) {
-      img.addEventListener("error", function () { marcarVazio(img); });
-      if (img.complete && img.naturalWidth === 0) marcarVazio(img);
-    });
-  })();
-
-  /* =======================================================
      6. Carrossel de depoimentos
      ======================================================= */
   (function carousel() {
@@ -676,10 +663,33 @@
 
   /* Faixa contínua de marcas: a segunda sequência espelha a primeira. */
   (function clientLogoMarquee() {
+    var marquee = $(".logo-marquee");
+    var track = $(".logo-marquee__track");
     var firstGroup = $(".logo-marquee__group:not([aria-hidden])");
     var cloneGroup = $(".logo-marquee__group[aria-hidden='true']");
-    if (!firstGroup || !cloneGroup) return;
+    if (!marquee || !track || !firstGroup || !cloneGroup) return;
     cloneGroup.innerHTML = firstGroup.innerHTML;
+
+    // Os logos são pequenos (cerca de 360 KB no total). Carregá-los de forma
+    // explícita evita cartões vazios no início da faixa — navegadores podem
+    // adiar imagens lazy dentro de um conteúdo horizontal animado.
+    $$("img", track).forEach(function (img) {
+      img.loading = "eager";
+      img.decoding = "async";
+    });
+
+    // A faixa so anima quando esta visivel, evitando trabalho continuo da GPU
+    // enquanto a pessoa navega por outras partes da landing page.
+    if ("IntersectionObserver" in window) {
+      var logoObserver = new IntersectionObserver(function (entries) {
+        track.classList.toggle("is-paused", !entries[0].isIntersecting);
+      }, { rootMargin: "120px 0px", threshold: 0 });
+      logoObserver.observe(marquee);
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      track.classList.toggle("is-page-hidden", document.hidden);
+    });
   })();
 
   /* =======================================================
@@ -688,7 +698,21 @@
   function initFaq() {
     var root = $("#faq");
     if (!root) return;
-    if (root.children.length) return;
+
+    // A FAQ já existe no HTML para permanecer visível mesmo sem JavaScript.
+    // Neste caso, o script adiciona apenas o comportamento do acordeão.
+    if (root.children.length) {
+      $$(".faq__trigger", root).forEach(function (btn) {
+        var panel = document.getElementById(btn.getAttribute("aria-controls"));
+        if (!panel) return;
+        btn.addEventListener("click", function () {
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+          closeAll();
+          if (!isOpen) open(btn, panel);
+        });
+      });
+      return;
+    }
 
     var items = [
       {

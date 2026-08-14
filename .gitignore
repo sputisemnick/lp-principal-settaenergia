@@ -1,0 +1,18 @@
+# Cópia local/legada da própria landing page. A publicação usa a raiz.
+/lp-empresas-setta/
+
+# Fontes PNG pesadas já substituídas por WebP no HTML.
+/assets/images/hero-familia-desktop-v2.png
+/assets/images/casal-cozinhando-v2.png
+/assets/images/casal-relaxando-v1.png
+/assets/images/casal-relaxando-animado-v1.png
+/assets/images/empresario-setta-v2.png
+/assets/images/clientes-totais2.png
+/assets/images/sim/*-v2.png
+/assets/images/passos/*-v2.png
+/assets/images/depoimentos/*-v2.png
+/assets/images/indique/celular-indique-v2.png
+
+# Arquivos do sistema operacional/editor.
+Thumbs.db
+.DS_Store
