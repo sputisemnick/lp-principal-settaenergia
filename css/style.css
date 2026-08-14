@@ -430,7 +430,7 @@ button { cursor: pointer; }
   font-size: 15.5px;
   line-height: 1.6;
 }
-.hero__lead--secondary { margin-top: 4px; }
+.hero__lead.hero__lead--secondary { margin-top: 0; }
 .hero__lead strong {
   padding-inline: .08em;
   color: #eeeeee;
@@ -439,7 +439,7 @@ button { cursor: pointer; }
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-.hero__lead span { display: block; margin-top: 4px; color: #dddddd; }
+.hero__lead span { display: block; margin-top: 0; color: #dddddd; }
 
 .hero__form { margin: 0; padding: 0; border: 0; }
 
