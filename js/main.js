@@ -692,6 +692,50 @@
     });
   })();
 
+  /* Contagem social: roda uma única vez ao entrar na tela, sem listeners de scroll. */
+  (function clientCountUp() {
+    var counter = $("#client-count-value");
+    if (!counter) return;
+
+    var target = 9000;
+    var finalLabel = "+ de 9 mil";
+    var formatter = new Intl.NumberFormat("pt-BR");
+
+    function finish() {
+      counter.textContent = finalLabel;
+    }
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      finish();
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+
+      var startedAt = 0;
+      var duration = 1800;
+
+      function step(timestamp) {
+        if (!startedAt) startedAt = timestamp;
+        var progress = Math.min((timestamp - startedAt) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        counter.textContent = formatter.format(Math.round(target * eased));
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          finish();
+        }
+      }
+
+      window.requestAnimationFrame(step);
+    }, { threshold: .45, rootMargin: "0px 0px -6% 0px" });
+
+    observer.observe(counter);
+  })();
+
   /* =======================================================
      7. FAQ — accordion acessível (uma pergunta aberta por vez)
      ======================================================= */
